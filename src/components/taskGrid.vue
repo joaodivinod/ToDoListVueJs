@@ -1,9 +1,13 @@
 <template>
     <div class="tasks">
         <template v-if="tasks.length">
-            <task v-for="task in tasks" :key="task.name" :task="task">
+
+            <task v-for="(task, i) in tasks" :key="task.name"
+                  taskDeleted="$emit('taskDeleted',i)"
+                  :task="task">
                 {{task.name}}
             </task>
+
         </template>
         <p v-else class="no-task">
             Sua vida esta em dia
